@@ -2,7 +2,6 @@ import React from "react";
 import './App.css';
 
 function App() {
-    let a = "1";
 
     const combinations = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]];
     const [gameStat, setGameStat] = React.useState({
@@ -20,10 +19,6 @@ function App() {
     }
 
     function checkWin() {
-        a = 1
-        if(gameStat.isStrike) {
-            return;
-        }
         for(let i= 0; i < combinations.length; i++) {
             let combination = combinations[i];
             if(gameStat.store[combination[0]] !== 0
@@ -70,7 +65,7 @@ function App() {
         e.currentTarget.classList.add(cellNewClassName);
     }
 
-    React.useEffect(checkWin, [gameStat, a])
+    React.useEffect(checkWin, [gameStat.store])
 
     return (
         <div className="App">
